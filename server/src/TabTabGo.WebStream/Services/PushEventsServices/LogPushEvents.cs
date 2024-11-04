@@ -11,17 +11,7 @@ namespace TabTabGo.WebStream.Services.PushEventsServices
 {
     internal class LogPushEvents(ILogger<IPushEvent> logger) : IPushEvent
     {
-        public Task PushAsync(IEnumerable<string> connectionIds, WebStreamMessage message, CancellationToken cancellationToken = default)
-        {
-            logger.LogInformation("pushing message to devices of connections  {@connectionIds} {@message}", connectionIds, message);
-            return Task.CompletedTask;
-        }
-
-        public Task PushAsync(string connectionId, WebStreamMessage message, CancellationToken cancellationToken = default)
-        {
-            logger.LogInformation("pushing message to device of connection {@connectionId} {@message}", connectionId, message);
-            return Task.CompletedTask;
-        }
+         
 
         public Task PushToUserAsync(IEnumerable<UserIdData> userIds, WebStreamMessage message, CancellationToken cancellationToken = default)
         {

@@ -67,16 +67,7 @@ namespace TabTabGo.WebStream.AMQP.Services
                 }
             }
         }*/
-        public Task PushAsync(IEnumerable<string> connectionIds, WebStreamMessage message, CancellationToken cancellationToken = default)
-        {
-            return this.PushToAMQP(new QueueMessage() { ConnectionsId = connectionIds, WebStreamMessage = message });
-        }
-
-        public Task PushAsync(string connectionId, WebStreamMessage message, CancellationToken cancellationToken = default)
-        {
-            return this.PushToAMQP(new QueueMessage() { ConnectionsId = new List<string> { connectionId }, WebStreamMessage = message });
-        }
-
+       
         public Task PushToUserAsync(IEnumerable<UserIdData> userIds, WebStreamMessage message, CancellationToken cancellationToken = default)
         {
             return this.PushToAMQP(new QueueMessage() { UserIdData = userIds, WebStreamMessage = message });

@@ -19,20 +19,7 @@ namespace TabTabGo.WebStream.MessageStorage.Services
     {
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
-        public async Task PushAsync(IEnumerable<string> connectionIds, Model.WebStreamMessage message, CancellationToken cancellationToken = default)
-        {
-
-            await pushEvent.PushAsync(connectionIds, message, cancellationToken);
-            var userIds = await userConnections.GetUsersIdsByConnectionIdsAsync(connectionIds, cancellationToken);
-            await this.PushToUserAsync(userIds, message, cancellationToken);
-        }
-        public async Task PushAsync(string connectionId, Model.WebStreamMessage message, CancellationToken cancellationToken = default)
-        {
-            await pushEvent.PushAsync(connectionId, message, cancellationToken);
-            var userId = await userConnections.GetUserIdByConnectionIdAsync(connectionId, cancellationToken);
-            await this.PushToUserAsync(userId, message, cancellationToken);
-        }
-
+       
         public async Task PushToUserAsync(IEnumerable<UserIdData> userIds, Model.WebStreamMessage message, CancellationToken cancellationToken = default)
         {
             await pushEvent.PushToUserAsync(userIds, message, cancellationToken);

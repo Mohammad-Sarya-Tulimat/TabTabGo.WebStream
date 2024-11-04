@@ -10,25 +10,14 @@ namespace TabTabGo.WebStream.Services.PushEventsServices
 {
     public class NullPushEvent : IPushEvent
     {
-        public Task PushAsync(IEnumerable<string> connectionIds, WebStreamMessage message, CancellationToken cancellationToken = default)
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task PushAsync(string connectionId, WebStreamMessage message, CancellationToken cancellationToken = default)
-        {
-            return Task.CompletedTask;
-        }
+        
 
         public Task PushAsync(IEnumerable<UserIdData> connectionIds, string eventName, object data, CancellationToken cancellationToken = default)
         {
             return Task.CompletedTask;
         }
 
-        public Task PushAsync(string connectionId, string eventName, object data, CancellationToken cancellationToken = default)
-        {
-            return Task.CompletedTask;
-        }
+      
 
         public Task PushToUserAsync(IEnumerable<UserIdData> userIds, WebStreamMessage message, CancellationToken cancellationToken = default)
         {

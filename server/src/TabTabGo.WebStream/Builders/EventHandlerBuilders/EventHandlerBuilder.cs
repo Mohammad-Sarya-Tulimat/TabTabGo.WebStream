@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using TabTabGo.WebStream.Services.Contract;
 using TabTabGo.WebStream.Services.EventHandlersServices;
+using TabTabGo.WebStream.Services.PushEventsServices;
 
 namespace TabTabGo.WebStream.Builders.EventHandlerBuilders
 {
@@ -13,6 +14,12 @@ namespace TabTabGo.WebStream.Builders.EventHandlerBuilders
         {
             var nullresult = new NullReceiveEvent();
             Object = (s) => nullresult;
+            return this;
+        }
+
+        public EventHandlerBuilder RedirectToUser()
+        { 
+            Object = (s) => new RedirectReciveEvent(s.GetRequiredService<IPushEvent>());
             return this;
         }
         /// <summary>
